@@ -95,4 +95,23 @@ var app = new Vue ({
         //search:'',
         //time: '',
     },
-})
+    // methods: {
+
+    //     selectChat: (index) => {
+    //         this.chatActive = index;
+    //         app.autoScroll();
+    //     },
+    //     //aggiunta nuovo messaggio nell'oggetto creato in funzione
+    //     addNewMex: () => {
+    //         var newMessage = {
+    //             date:'',
+    //             message: this.addNewMex,
+    //             status: 'sent'
+    //         };
+    //         this.contacts[this.chatActive].messages.push(newMessage);
+    //         //azzero l'input
+    //         this.newMex = '';
+
+    //     }
+    // }
+});

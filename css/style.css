@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Lexend', sans-serif;
 }
 /* utility */
 img{
@@ -16,6 +17,7 @@ i {
     font-size: 20px;
 }
 /* utility */
+
 /* background pagina */
 .background {
     width: 100vw;
@@ -32,8 +34,8 @@ i {
     height: 125px;
     background-color: #1ca696;
 }
-/* background pagina */
-.container{
+/* fine background pagina */
+.container {
     display: flex;
     position: absolute;
     top: 30px;
@@ -41,8 +43,9 @@ i {
     width: 80%;
     height: 90%;
 }
+
 /* left and right side */
-.list-user{
+.list-user {
     width: 40%;
     height: 100%;
     border-right: 2px solid silver;
@@ -114,6 +117,15 @@ i {
     padding-left: 30px;
 }
 
+#search-bar {
+    border: none;
+    width: 80%;
+    line-height: 30px;
+    padding-left: 10px;
+    margin-left: 10px;
+    border-radius: 20px;
+}
+
 /* recent chat list */
 .recent-chat {
     height: calc( 100% - 80px - 80px - 50px );
@@ -121,7 +133,7 @@ i {
     overflow-y: auto;
 }
 
-.list-chat{
+.list-chat {
     display: flex;
     padding: 10px;
     justify-content: space-between;
@@ -143,12 +155,7 @@ i {
     color: silver;
 }
 
-.time-last-mex{
-    font-size: 12px;
-    color: silver;
-    float: right;
 
-}
 /* right side */
 .chat {
     width: 60%;
@@ -171,7 +178,33 @@ i {
     clear: both;
     border-radius: 10px;
     border: 1px solid silver;
-    font-size: 20px;
+    font-size: 15px;
     margin-bottom: 10px;
     position: relative;
+}
+
+.chat-message p.received{
+    background-color: white;
+    float: left;
+    position: relative;
+}
+.chat-message p.sent{
+    background-color: lightgreen;
+    float: right;
+    position: relative;
+}
+
+/* input-mex */
+.input-mex {
+    height: 80px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #F4F0ED;
+}
+
+#input-message{
+    width: 80%;
+    line-height: 30px;
+    padding-left: 10px;
 }

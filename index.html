@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
@@ -58,7 +60,6 @@
                             <div class="recent-user-mex">
                                 <h4>{{user.name}}</h4>
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -71,30 +72,36 @@
                         <img :src="contacts[chatActive].avatar" alt="imgProfile">
                     </div>
                     <div>
-                        <h4> {{ contacts[chatActive].name }}</h4>
+                        <h4> {{contacts[chatActive].name}}</h4>
                         <p>ultimo accesso
                             <span> {{contacts[chatActive].messages[contacts[chatActive].messages.length - 1].date }}
                             </span>
                         </p>
                     </div>
+                    <div class="right-icons">
+                        <i class="fas fa-search"></i>
+                        <i class="fas fa-paperclip"></i>
+                        <i class="fas fa-ellipsis-v"></i>
+                    </div>
                 </div>
-                <div class="right-icons">
-                    <i class="fas fa-search"></i>
-                    <i class="fas fa-paperclip"></i>
-                    <i class="fas fa-ellipsis-v"></i>
+                <!-- chat messages -->
+                <div id="chat-page" class="conversation">
+                    <div class="chat-message" v-for="(mex, index) in contacts[chatActive].messages">
+                        <p :class="mex.status">
+                            <span>{{mex.text}}</span>
+                            
+                        </p>
+                    </div>      
                 </div>
-            </div>
-            <!-- chat messages -->
-            <div id="chat-page" class="conversation">
-                <div class="chat-message" v-for="(mex, index) in contacts[chatActive].messages">
-
-                </div>      
+                <!-- input messages -->
+                <div class="input-mex">
+                    <i class="far fa-smile"></i>
+                        <input id="input-message" type="text" name="" value="" placeholder="Scrivi un messaggio" v-model="newMex" @keyUp.enter="addNewMex">
+                        <i id="invio-mex" @click="addNewMex" class="fas fa-paper-plane"></i>
+                        <i class="fas fa-microphone"></i>
+                </div>
             </div>
         </div>
-        
-        
-        
-
     </div>
     <script src="main.js" charset="utf-8"></script>
 </body>
