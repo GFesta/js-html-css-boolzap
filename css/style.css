@@ -1,0 +1,177 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* utility */
+img{
+    height: 60px;
+    width: 60px;
+    cursor:pointer;
+    border-radius: 50%;
+}
+
+i {
+    cursor: pointer;
+    font-size: 20px;
+}
+/* utility */
+/* background pagina */
+.background {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+	top: 0;
+    left: 0;
+	z-index: -1;
+	background-color: #d9dbd5;
+}
+
+.background-top {
+    width: 100vw;
+    height: 125px;
+    background-color: #1ca696;
+}
+/* background pagina */
+.container{
+    display: flex;
+    position: absolute;
+    top: 30px;
+    left: 10%;
+    width: 80%;
+    height: 90%;
+}
+/* left and right side */
+.list-user{
+    width: 40%;
+    height: 100%;
+    border-right: 2px solid silver;
+}
+
+.img-user-left, .img-user-right {
+    height: 80px;
+    background-color: #F4F0ED;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+.profile-user, .info-user-active{
+    display: flex;
+    align-items: center;
+}
+.profile-user span {
+    margin-left: 10px;
+}
+
+.right-icons i {
+    font-size: 20px;
+    color: lightgray;
+    padding: 10px;
+}
+
+/* alert + notifications */
+.alert-notify {
+    background-color: rgb(135, 206, 245);
+    height: 80px;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+}
+
+.bell-alert {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    background-color: white;
+    margin-right: 10px;
+}
+.bell-alert i {
+    font-size: 22px;
+    color: rgb(153, 223, 252);
+}
+
+.mex-alert p {
+    font-size: 12px;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+/* search + new chat */
+.research {
+    height: 50px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+}
+.research i {
+    color: rgb(190, 193, 195);
+    font-size: 15px;
+    padding-left: 30px;
+}
+
+/* recent chat list */
+.recent-chat {
+    height: calc( 100% - 80px - 80px - 50px );
+    background-color: white;
+    overflow-y: auto;
+}
+
+.list-chat{
+    display: flex;
+    padding: 10px;
+    justify-content: space-between;
+}
+.list-chat:hover {
+    background-color: rgb(231, 233, 236);
+    cursor: pointer;
+}
+
+.recent-conversations{
+    display: flex;
+}
+
+.recent-user-mex {
+    padding: 10px;
+}
+.recent-user-mex p {
+    font-size: 14px;
+    color: silver;
+}
+
+.time-last-mex{
+    font-size: 12px;
+    color: silver;
+    float: right;
+
+}
+/* right side */
+.chat {
+    width: 60%;
+}
+
+.conversation{
+    height: calc( 100% - 80px - 80px );
+    background-image: url("../img/mine.jpg");
+    clear: both;
+    padding: 40px;
+    object-fit: cover;
+    overflow: auto;
+}
+
+/* chat messages */
+.chat-message p {
+    max-width: 250px;
+    min-width: 30px;
+    padding: 10px;
+    clear: both;
+    border-radius: 10px;
+    border: 1px solid silver;
+    font-size: 20px;
+    margin-bottom: 10px;
+    position: relative;
+}
