@@ -26,7 +26,7 @@
                 <div class="img-user-left">
                     <div class="profile-user">
                         <img :src="profile.avatar" alt="imgProfile">
-                        <span>{{profile.name}}</span>
+                        <span>{{ profile.name }}</span>
                     </div>
                     <div class="right-icons">
                         <i class="fas fa-circle-notch"></i>
@@ -51,35 +51,33 @@
                 </div>
                 <!-- recent chat list -->
                 <div class="recent-chat">
-                    <!-- ciclo for -->
-                    <div class="list-chat" v-for='(contact, index) in contacts' @click='selectChat(index)'>
+                    <!-- ciclo for e if-->
+                    <div class="list-chat" v-for='(user, index) in contacts' v-if="user.visible" @click="selectChat(index)" :class="index == chatActive ? 'active' : null">
                         <div class="recent-conversations">
                             <div class="recent-user-img">
-                                <img :src="contact.avatar" alt="contact.name">
+                                <img :src="user.avatar" alt="user.name">
                             </div>
-                            <!-- user name -->
+                            <!-- last message user name -->
                             <div class="recent-user-mex">
-                                <h4>{{contact.name}}</h4>
-                                <p>{{ contact.messages[contact.messages.length - 1].message}}</p>
+                                <h4>{{ user.name }}</h4>
+                                <p>{{ user.messages[user.messages.length - 1].message }}</p>
                             </div>
                         </div>
                     </div>
                 </div>
-            <!-- fine left side -->
+            <!-- fine LEFT side -->
             </div>
             <!-- RIGHT side- -->
             <div class="chat">
                 <div class="img-user-right">
                     <div class="info-user-active">
                         <img :src="contacts[chatActive].avatar" alt="imgProfile">
+                        <div>
+                            <h4> {{ contacts[chatActive].name }}</h4>
+                            <p>ultimo accesso <span>{{ contacts[chatActive].messages[contacts[chatActive].messages.length - 1].date }}</span></p>
+                        </div>
                     </div>
-                    <div>
-                        <h4> {{contacts[chatActive].name}}</h4>
-                        <p>ultimo accesso
-                            <span> {{contacts[chatActive].messages[contacts[chatActive].messages.length - 1].date }}
-                            </span>
-                        </p>
-                    </div>
+                    
                     <div class="right-icons">
                         <i class="fas fa-search"></i>
                         <i class="fas fa-paperclip"></i>
@@ -89,9 +87,11 @@
                 <!-- chat messages -->
                 <div id="chat-page" class="conversation">
                     <div class="chat-message" v-for="(mex, index) in contacts[chatActive].messages">
-                        <p :class="mex.status">
-                            <span>{{mex.text}}</span>
-                            
+                        <p :class="mex.status">{{ mex.text }}
+                            <span class="time-messages">00.00</span>
+                            <i id="arrow-menu" class="fas fa-angle-down">
+                                <span @click="remove(index)">Cancella</span>
+                            </i>
                         </p>
                     </div>      
                 </div>
@@ -103,6 +103,7 @@
                         <i class="fas fa-microphone"></i>
                 </div>
             </div>
+            <!-- fine RIGHT side -->
         </div>
     </div>
     <script src="main.js" charset="utf-8"></script>

@@ -1,7 +1,6 @@
 var app = new Vue ({
     el: '#root',
     data: {
-        chatActive: 0,
         profile: {
             name: 'Paola',
             avatar: 'img/avatar_io.jpg'
@@ -91,17 +90,75 @@ var app = new Vue ({
                 ],
             },
         ],
+        chatActive: 0,
+        newMex: '',
+        search: '',
+        //time: '',
         
     },
     methods: {
 
-        selectChat(index) {
+        selectChat: function(index) {
             this.chatActive = index;
-            console.log(index);
+            //console.log(index);
         },
 
-        
-    
-    }
+        //creo funzione per aggiungere un messaggio
+        addNewMex() {
+            var newMessage = {
+                date: '24/01/2021 17:42:55',
+                message: this.addNewMex,
+                status: 'sent'
+            };
+            this.contacts[this.chatActive].messages.push(newMessage);
+            //azzero input
+            this.addNewMex = '';
+
+            
+            //arrow function per creare la risposta dopo 1 secondo
+            setTimeout (() => {
+                let reply = {
+                    date: '24/01/2021 17:42:55',
+                    message: 'Ok',
+                    status: 'receveid'
+                }
+                this.contacts[this.chatActive].messages.push(reply);
+            
+            }, 1000)
+        },
+
+
+        //creo funzione per la ricerca degli utenti
+        filteredList() {
+            var userSearch = this.search.toLowerCase();  //variabile che salva i dati input trasformati
+
+            //condizioni if + else per cercare i dati trasformati
+            this.contacts.forEach((user, i) => {
+                if(user.name,toLowerCase().includes(userSearch)) {
+                    user.visible = true;
+                } else {
+                    user.visible = false;
+                }
+            });
+        },
+
+        //funzione calcola ora
+        time(mex) {
+            return SVGAnimateMotionElement(mex, date, 'DD/MM/YY hh:mm:ss').format("LT");
+        },
+        timeLastMex(user) {
+            var time = user.messages[user.messages.length - 1].date;
+            return SVGAnimateMotionElement(time, "LT").format("LT");
+        },
+
+
+        //creo funzione x cancellare messaggio
+        remove(index) {
+            this.contacts[this.chatActive].messages.splice(index, 1);
+        },
+
+
+    },
+
     
 });

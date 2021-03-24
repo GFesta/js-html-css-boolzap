@@ -155,7 +155,7 @@ i {
     cursor: pointer;
 }
 
-.recent-conversations{
+.recent-conversations {
     display: flex;
 }
 
@@ -168,13 +168,19 @@ i {
     color: silver;
 }
 
+/* .time-last-mex {
+    font-size: 12px;
+    color: silver;
+    float: right;
+
+} */
 
 /* right side */
 .chat {
     width: 60%;
 }
 
-.conversation{
+.conversation {
     height: calc( 100% - 80px - 80px );
     background-image: url("../img/mine.jpg");
     clear: both;
@@ -196,15 +202,46 @@ i {
     position: relative;
 }
 
-.chat-message p.received{
+.chat-message p.received {
     background-color: white;
     float: left;
     position: relative;
 }
-.chat-message p.sent{
+.chat-message p.sent {
     background-color: #9bde91;
     float: right;
     position: relative;
+}
+
+.time-messages {
+    font-size: 12px;
+    color: grey;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+
+}
+
+#arrow-menu {
+    opacity: 0;
+    position: relative;
+}
+.chat-mexage p:hover #arrow-menu {
+    opacity: 1;
+}
+
+#arrow-menu span {
+    position: absolute;
+    background-color: white;
+    border-radius: 10px;
+    border: 1px solid grey;
+    top: 100%;
+    left: -400%;
+    width: 100px;
+    height: 100px;
+    z-index: 1;
+    text-align: center;
+    padding-top: 10px;
 }
 
 /* input-mex */
@@ -216,16 +253,16 @@ i {
     background-color: #F4F0ED;
 }
 
-#input-message{
+#input-message {
     width: 80%;
     line-height: 30px;
     padding-left: 10px;
     outline: none;
 }
 
-@media screen and (max-width: 500px) {
+/* @media screen and (max-width: 500px) {
     body {
         width: 100%;
         height: 100vh;
     }
-}
+} */
