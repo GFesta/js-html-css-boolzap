@@ -1,8 +1,9 @@
 var app = new Vue ({
     el: '#root',
     data: {
+        chatActive: 0,
         profile: {
-            name: 'Nome Utente',
+            name: 'Paola',
             avatar: 'img/avatar_io.jpg'
         },
         contacts: [
@@ -90,28 +91,17 @@ var app = new Vue ({
                 ],
             },
         ],
-        chatActive: 0,
-        //newMex:'',
-        //search:'',
-        //time: '',
+        
     },
-    // methods: {
+    methods: {
 
-    //     selectChat: (index) => {
-    //         this.chatActive = index;
-    //         app.autoScroll();
-    //     },
-    //     //aggiunta nuovo messaggio nell'oggetto creato in funzione
-    //     addNewMex: () => {
-    //         var newMessage = {
-    //             date:'',
-    //             message: this.addNewMex,
-    //             status: 'sent'
-    //         };
-    //         this.contacts[this.chatActive].messages.push(newMessage);
-    //         //azzero l'input
-    //         this.newMex = '';
+        selectChat(index) {
+            this.chatActive = index;
+            console.log(index);
+        },
 
-    //     }
-    // }
+        
+    
+    }
+    
 });

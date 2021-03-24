@@ -20,7 +20,7 @@
         </div>
         <!-- container diviso in due -->
         <div class="container">
-            <!-- left side -->
+            <!-- LEFT side -->
             <div class="list-user">
                 <!-- img profile and icons -->
                 <div class="img-user-left">
@@ -51,21 +51,23 @@
                 </div>
                 <!-- recent chat list -->
                 <div class="recent-chat">
-                    <div class="list-chat" v-if='user.visible' v-for='(user, index) in contacts'@click='selectChat(index)'>
+                    <!-- ciclo for -->
+                    <div class="list-chat" v-for='(contact, index) in contacts' @click='selectChat(index)'>
                         <div class="recent-conversations">
                             <div class="recent-user-img">
-                                <img :src="user.avatar" alt="user.name">
+                                <img :src="contact.avatar" alt="contact.name">
                             </div>
                             <!-- user name -->
                             <div class="recent-user-mex">
-                                <h4>{{user.name}}</h4>
+                                <h4>{{contact.name}}</h4>
+                                <p>{{ contact.messages[contact.messages.length - 1].message}}</p>
                             </div>
                         </div>
                     </div>
                 </div>
             <!-- fine left side -->
             </div>
-            <!-- right side- -->
+            <!-- RIGHT side- -->
             <div class="chat">
                 <div class="img-user-right">
                     <div class="info-user-active">

@@ -2,6 +2,12 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+body {
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+    height: 100vh;
     font-family: 'Lexend', sans-serif;
 }
 /* utility */
@@ -35,6 +41,7 @@ i {
     background-color: #1ca696;
 }
 /* fine background pagina */
+
 .container {
     display: flex;
     position: absolute;
@@ -42,6 +49,9 @@ i {
     left: 10%;
     width: 80%;
     height: 90%;
+    margin: auto;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+
 }
 
 /* left and right side */
@@ -52,11 +62,11 @@ i {
 }
 
 .img-user-left, .img-user-right {
-    height: 80px;
-    background-color: #F4F0ED;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    height: 80px;
+    background-color: #F4F0ED;
     padding: 10px;
 }
 
@@ -70,7 +80,7 @@ i {
 
 .right-icons i {
     font-size: 20px;
-    color: lightgray;
+    color: #9e9e9e;
     padding: 10px;
 }
 
@@ -87,8 +97,8 @@ i {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 60px;
-    width: 60px;
+    height: 50px;
+    width: 50px;
     border-radius: 50%;
     background-color: white;
     margin-right: 10px;
@@ -107,7 +117,7 @@ i {
 /* search + new chat */
 .research {
     height: 50px;
-    background-color: white;
+    background-color: #f3f3f3;
     display: flex;
     align-items: center;
 }
@@ -123,14 +133,16 @@ i {
     line-height: 30px;
     padding-left: 10px;
     margin-left: 10px;
-    border-radius: 20px;
+    border-radius: 10px;
+    border: 1px solid #d8d0d0;
+    outline: none;
 }
 
 /* recent chat list */
 .recent-chat {
     height: calc( 100% - 80px - 80px - 50px );
     background-color: white;
-    overflow-y: auto;
+    overflow-y: scroll;
 }
 
 .list-chat {
@@ -146,6 +158,7 @@ i {
 .recent-conversations{
     display: flex;
 }
+
 
 .recent-user-mex {
     padding: 10px;
@@ -167,7 +180,7 @@ i {
     clear: both;
     padding: 40px;
     object-fit: cover;
-    overflow: auto;
+    overflow-y: scroll;
 }
 
 /* chat messages */
@@ -189,7 +202,7 @@ i {
     position: relative;
 }
 .chat-message p.sent{
-    background-color: lightgreen;
+    background-color: #9bde91;
     float: right;
     position: relative;
 }
@@ -207,4 +220,12 @@ i {
     width: 80%;
     line-height: 30px;
     padding-left: 10px;
+    outline: none;
+}
+
+@media screen and (max-width: 500px) {
+    body {
+        width: 100%;
+        height: 100vh;
+    }
 }
