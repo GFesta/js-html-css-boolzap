@@ -74,7 +74,9 @@
                         <img :src="contacts[chatActive].avatar" alt="imgProfile">
                         <div>
                             <h4> {{ contacts[chatActive].name }}</h4>
-                            <p>ultimo accesso <span>{{ contacts[chatActive].messages[contacts[chatActive].messages.length - 1].date }}</span></p>
+                            <p>ultimo accesso
+                                <span>{{ contacts[chatActive].messages[contacts[chatActive].messages.length - 1].date }}</span>
+                            </p>
                         </div>
                     </div>
                     
@@ -87,8 +89,8 @@
                 <!-- chat messages -->
                 <div id="chat-page" class="conversation">
                     <div class="chat-message" v-for="(mex, index) in contacts[chatActive].messages">
-                        <p :class="mex.status">{{ mex.text }}
-                            <span class="time-messages">00.00</span>
+                        <p :class="mex.status"> {{ mex.text }}
+                            <span class="time-messages"> 10:15 </span>
                             <i id="arrow-menu" class="fas fa-angle-down">
                                 <span @click="remove(index)">Cancella</span>
                             </i>

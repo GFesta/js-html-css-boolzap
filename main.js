@@ -90,6 +90,7 @@ var app = new Vue ({
                 ],
             },
         ],
+        contactsIndex: 0,
         chatActive: 0,
         newMex: '',
         search: '',
@@ -98,28 +99,32 @@ var app = new Vue ({
     },
     methods: {
 
-        selectChat: function(index) {
+        //per selezionare la chat/contatto
+        selectChat(index) {
             this.chatActive = index;
             //console.log(index);
         },
 
         //creo funzione per aggiungere un messaggio
-        addNewMex() {
+        addNewMex: function() {
             var newMessage = {
-                date: '24/01/2021 17:42:55',
-                message: this.addNewMex,
+                date: '10/01/2020 15:30:55',
+                text: this.newMex,
                 status: 'sent'
             };
             this.contacts[this.chatActive].messages.push(newMessage);
-            //azzero input
-            this.addNewMex = '';
+             //azzero l'input
+            this.newMex = '';
+        
+            
+            this.message = '';
 
             
-            //arrow function per creare la risposta dopo 1 secondo
+            //arrow function per creare la risposta(reply) dopo 1 secondo
             setTimeout (() => {
                 let reply = {
                     date: '24/01/2021 17:42:55',
-                    message: 'Ok',
+                    text: 'Ok',
                     status: 'receveid'
                 }
                 this.contacts[this.chatActive].messages.push(reply);
