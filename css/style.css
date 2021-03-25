@@ -11,6 +11,11 @@ body {
     font-family: 'Lexend', sans-serif;
 }
 /* utility */
+.change-color-mode {
+    background-color: rgb(0, 0, 0);
+    color: rgb(216, 35, 35);
+}
+
 img{
     height: 60px;
     width: 60px;
@@ -102,6 +107,7 @@ i {
 }
 .profile-user span {
     margin-left: 10px;
+    font-weight: bold;
 }
 
 .right-icons i {
@@ -226,12 +232,15 @@ i {
     font-size: 15px;
     margin-bottom: 10px;
     position: relative;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }
 
 .chat-message p.received {
     background-color: white;
     float: left;
     position: relative;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }
 .chat-message p.sent {
     background-color: #9bde91;

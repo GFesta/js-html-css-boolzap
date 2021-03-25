@@ -1,8 +1,14 @@
+//click sul circle-notch e cambia colore alle scritte
+function myFunction() {
+    var element = document.body;
+    element.classList.toggle("change-color-mode");
+}
+
 var app = new Vue ({
     el: '#root',
     data: {
         profile: {
-            name: 'Paola',
+            name: 'Paola (tu)',
             avatar: 'img/avatar_io.jpg'
         },
         contacts: [
@@ -89,6 +95,7 @@ var app = new Vue ({
                     }
                 ],
             },
+            
         ],
         contactsIndex: 0,
         chatActive: 0,
@@ -103,9 +110,10 @@ var app = new Vue ({
         selectChat(index) {
             this.chatActive = index;
             //console.log(index);
+            //app.autoScroll();
         },
 
-        //creo funzione per aggiungere un messaggio
+        //creo funzione per aggiungere un messaggio nuovo
         addNewMex: function() {
             var newMessage = {
                 date: '10/01/2020 15:30:55',
@@ -115,9 +123,6 @@ var app = new Vue ({
             this.contacts[this.chatActive].messages.push(newMessage);
              //azzero l'input
             this.newMex = '';
-        
-            
-            this.message = '';
 
             
             //arrow function per creare la risposta(reply) dopo 1 secondo
@@ -128,7 +133,7 @@ var app = new Vue ({
                     status: 'receveid'
                 }
                 this.contacts[this.chatActive].messages.push(reply);
-            
+
             }, 1000)
         },
 
@@ -139,7 +144,7 @@ var app = new Vue ({
 
             //condizioni if + else per cercare i dati trasformati
             this.contacts.forEach((user, i) => {
-                if(user.name,toLowerCase().includes(userSearch)) {
+                if(user.name.toLowerCase().includes(userSearch)) {
                     user.visible = true;
                 } else {
                     user.visible = false;
@@ -147,23 +152,29 @@ var app = new Vue ({
             });
         },
 
-        //funzione calcola ora
-        time(mex) {
-            return SVGAnimateMotionElement(mex, date, 'DD/MM/YY hh:mm:ss').format("LT");
-        },
-        timeLastMex(user) {
-            var time = user.messages[user.messages.length - 1].date;
-            return SVGAnimateMotionElement(time, "LT").format("LT");
-        },
-
-
         //creo funzione x cancellare messaggio
         remove(index) {
             this.contacts[this.chatActive].messages.splice(index, 1);
         },
+        //funzione calcola ora
+        time(mex) {
+            return moment(mex, date, 'DD/MM/YY hh:mm:ss').format("LT");
+        },
+        timeLastMex(user) {
+            var time = user.messages[user.messages.length - 1].date;
+            return moment(time, "LT").format("LT");
+        },
 
+        autoScroll() {
+            vue.nextTick(function (){
+                let chatPage = document.getElementById('chat-page');
+                chatPage.scrollTop = chatPage.scrollHeight;
+            });
+        },
 
-    },
-
-    
+        mounted:
+            function() {
+            this.autoScroll();
+        },
+    }, 
 });
