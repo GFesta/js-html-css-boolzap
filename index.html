@@ -60,7 +60,10 @@
                             <!-- last message user name -->
                             <div class="recent-user-mex">
                                 <h4>{{ user.name }}</h4>
-                                <p>{{ user.messages[user.messages.length - 1].message }}</p>
+                                <p>{{ user.messages[user.messages.length - 1].text }}</p>
+                            </div>
+                            <div class="recent-time-mex">
+                                <span>{{user.date}}</span>
                             </div>
                         </div>
                     </div>
