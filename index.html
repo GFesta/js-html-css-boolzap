@@ -90,11 +90,14 @@
                 <div id="chat-page" class="conversation">
                     <div class="chat-message" v-for="(mex, index) in contacts[chatActive].messages">
                         <p :class="mex.status"> {{ mex.text }}
-                            <span class="time-messages"> 10:15 </span>
+                            <span class="message-time">{{ mex.date }}</span>
+                            <span class="time-messages"> </span>
+                            
                             <i id="arrow-menu" class="fas fa-angle-down">
                                 <span @click="remove(index)">Cancella</span>
                             </i>
                         </p>
+                        
                     </div>      
                 </div>
                 <!-- input messages -->

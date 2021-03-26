@@ -11,6 +11,13 @@ body {
     font-family: 'Lexend', sans-serif;
 }
 /* utility */
+.message-time {
+    display: block;
+    font-size: 12px;
+    text-align: right;
+    color: gray;
+    padding-top: 10px;
+}
 .change-color-mode {
     background-color: rgb(0, 0, 0);
     color: rgb(216, 35, 35);

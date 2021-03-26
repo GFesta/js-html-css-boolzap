@@ -115,6 +115,7 @@ var app = new Vue ({
 
         //creo funzione per aggiungere un messaggio nuovo
         addNewMex: function() {
+            
             var newMessage = {
                 date: '10/01/2020 15:30:55',
                 text: this.newMex,
@@ -123,9 +124,10 @@ var app = new Vue ({
             this.contacts[this.chatActive].messages.push(newMessage);
              //azzero l'input
             this.newMex = '';
+            
 
             
-            //arrow function per creare la risposta(reply) dopo 1 secondo
+            //arrow function per creare la risposta messaggio(reply) dopo 1 secondo
             setTimeout (() => {
                 let reply = {
                     date: '24/01/2021 17:42:55',
@@ -156,17 +158,37 @@ var app = new Vue ({
         remove(index) {
             this.contacts[this.chatActive].messages.splice(index, 1);
         },
-        //funzione calcola ora
-        time(mex) {
-            return moment(mex, date, 'DD/MM/YY hh:mm:ss').format("LT");
-        },
-        timeLastMex(user) {
-            var time = user.messages[user.messages.length - 1].date;
-            return moment(time, "LT").format("LT");
-        },
 
+        //messagio automatico con orario corrente
+        getMsg: function(){
+            this.contatti[this.contactsIndex].chat.push(
+            {
+                //msg: "ok",
+                date: this.currentTime(),
+                status: 'sent'
+            });
+            this.scrollDown();
+            
+        },
+        //funzione calcola ora
+        currentTime: function(){
+            var today = new Date();
+            var date = today.getDate()+'/'+(today.getMonth()+1)+'/'+today.getFullYear();
+            var time = today.getHours() + ":" + today.getMinutes();
+            var dateTime = date+' '+time;
+            return dateTime;
+        },
+        // time(mex) {
+        //     return moment(mex, date, 'DD/MM/YY hh:mm:ss').format("LT");
+        // },
+        // timeLastMex(user) {
+        //     var time = user.messages[user.messages.length - 1].date;
+        //     return moment(time, "LT").format("LT");
+        // },
+
+            //scrollare in automatico ultimo messaggio da verificare funzionamento
         autoScroll() {
-            vue.nextTick(function (){
+            vue.nextTick (function (){
                 let chatPage = document.getElementById('chat-page');
                 chatPage.scrollTop = chatPage.scrollHeight;
             });
