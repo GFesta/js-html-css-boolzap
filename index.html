@@ -1,119 +1,116 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link rel="stylesheet" href="css/style.css">
-    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-
-    <title>BOOLZAPP</title>
-</head>
-<body>
-    <div id="root">
-        <!-- background pagina -->
-        <div class="background">
-            <div class="background-top"></div>
-        </div>
-        <!-- container diviso in due -->
-        <div class="container">
-            <!-- LEFT side -->
-            <div class="list-user">
-                <!-- img profile and icons -->
-                <div class="img-user-left">
-                    <div class="profile-user">
-                        <img :src="profile.avatar" alt="imgProfile">
-                        <span>{{ profile.name }}</span>
-                    </div>
-                    <div class="right-icons">
-                        <i onclick="myFunction()" class="fas fa-circle-notch"></i>
-                        <i class="fas fa-comment-alt"></i>
-                        <i class="fas fa-ellipsis-v"></i>
-                    </div>
-                </div>
-                <!-- section alert + notifications -->
-                <div class="alert-notify">
-                    <div class="bell-alert">
-                        <i class="fas fa-bell-slash"></i>
-                    </div>
-                    <div class="mex-alert">
-                        <h5>Ricevi notifiche di nuovi messaggi</h5>
-                        <p>Attiva notifiche desktop</p>
-                    </div>
-                </div>
-                <!-- search + new chat -->
-                <div class="research">
-                    <i class="fas fa-search"></i>
-                    <input id="search-bar" type="text" placeholder="Cerca o inizia una nuova chat" v-model="search" @keyUp="filteredList">
-                </div>
-                <!-- recent chat list -->
-                <div class="recent-chat">
-                    <!-- ciclo for e if-->
-                    <div class="list-chat" v-for='(user, index) in contacts' v-if="user.visible" @click="selectChat(index)" :class="index == chatActive ? 'active' : null">
-                        <div class="recent-conversations">
-                            <div class="recent-user-img">
-                                <img :src="user.avatar" alt="user.name">
-                            </div>
-                            <!-- last message user name -->
-                            <div class="recent-user-mex">
-                                <h4>{{ user.name }}</h4>
-                                <p>{{ user.messages[user.messages.length - 1].text }}</p>
-                            </div>
-                            <div class="recent-time-mex">
-                                <span>{{user.date}}</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            <!-- fine LEFT side -->
-            </div>
-            <!-- RIGHT side- -->
-            <div class="chat">
-                <div class="img-user-right">
-                    <div class="info-user-active">
-                        <img :src="contacts[chatActive].avatar" alt="imgProfile">
-                        <div>
-                            <h4> {{ contacts[chatActive].name }}</h4>
-                            <p>ultimo accesso
-                                <span>{{ contacts[chatActive].messages[contacts[chatActive].messages.length - 1].date }}</span>
-                            </p>
-                        </div>
-                    </div>
-                    
-                    <div class="right-icons">
-                        <i class="fas fa-search"></i>
-                        <i class="fas fa-paperclip"></i>
-                        <i class="fas fa-ellipsis-v"></i>
-                    </div>
-                </div>
-                <!-- chat messages -->
-                <div id="chat-page" class="conversation">
-                    <div class="chat-message" v-for="(mex, index) in contacts[chatActive].messages">
-                        <p :class="mex.status"> {{ mex.text }}
-                            <span class="message-time">{{ mex.date }}</span>
-                            <span class="time-messages"> </span>
-                            
-                            <i id="arrow-menu" class="fas fa-angle-down">
-                                <span @click="remove(index)">Cancella</span>
-                            </i>
-                        </p>
-                        
-                    </div>      
-                </div>
-                <!-- input messages -->
-                <div class="input-mex">
-                    <i class="far fa-smile"></i>
-                        <input id="input-message" type="text" name="" value="" placeholder="Scrivi un messaggio" v-model="newMex" @keyUp.enter="addNewMex">
-                        <i id="invio-mex" @click="addNewMex" class="fas fa-paper-plane"></i>
-                        <i class="fas fa-microphone"></i>
-                </div>
-            </div>
-            <!-- fine RIGHT side -->
-        </div>
-    </div>
-    <script src="main.js" charset="utf-8"></script>
-</body>
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <link rel="preconnect" href="https://fonts.gstatic.com"> 
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;700&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"> 
+    <link rel="stylesheet" href="css/style.css"> 
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script> 
+ 
+    <title>BOOLZAPP</title> 
+</head> 
+<body> 
+    <div id="root"> 
+        <!-- background pagina --> 
+        <div class="background"> 
+            <div class="background-top"></div> 
+        </div> 
+        <!-- container diviso in due --> 
+        <div class="container"> 
+            <!-- LEFT side --> 
+            <div class="list-user"> 
+                <!-- img profile and icons --> 
+                <div class="img-user-left"> 
+                    <div class="profile-user"> 
+                        <img :src="profile.avatar" alt="imgProfile"> 
+                        <span>{{ profile.name }}</span> 
+                    </div> 
+                    <div class="right-icons"> 
+                        <i onclick="myFunction()" class="fas fa-circle-notch"></i> 
+                        <i class="fas fa-comment-alt"></i> 
+                        <i class="fas fa-ellipsis-v"></i> 
+                    </div> 
+                </div> 
+                <!-- section alert + notifications --> 
+                <div class="alert-notify"> 
+                    <div class="bell-alert"> 
+                        <i class="fas fa-bell-slash"></i> 
+                    </div> 
+                    <div class="mex-alert"> 
+                        <h5>Ricevi notifiche di nuovi messaggi</h5> 
+                        <p>Attiva notifiche desktop</p> 
+                    </div> 
+                </div> 
+                <!-- search + new chat --> 
+                <div class="research"> 
+                    <i class="fas fa-search"></i> 
+                    <input id="search-bar" type="text" placeholder="Cerca o inizia una nuova chat" v-model="search" @keyUp="filteredList"> 
+                </div> 
+                <!-- recent chat list --> 
+                <div class="recent-chat"> 
+                    <!-- ciclo for e if--> 
+                    <div class="list-chat" v-for='(user, index) in contacts' v-if="user.visible" @click="selectChat(index)" :class="index == chatActive ? 'active' : null"> 
+                        <div class="recent-conversations"> 
+                            <div class="recent-user-img"> 
+                                <img :src="user.avatar" alt="user.name"> 
+                            </div> 
+                            <!-- last message user name --> 
+                            <div class="recent-user-mex"> 
+                                <h4>{{ user.name }}</h4> 
+                                <p>{{ user.messages[user.messages.length - 1].message }}</p> 
+                            </div> 
+                        </div> 
+                    </div> 
+                </div> 
+            <!-- fine LEFT side --> 
+            </div> 
+            <!-- RIGHT side- --> 
+            <div class="chat"> 
+                <div class="img-user-right"> 
+                    <div class="info-user-active"> 
+                        <img :src="contacts[chatActive].avatar" alt="imgProfile"> 
+                        <div> 
+                            <h4> {{ contacts[chatActive].name }}</h4> 
+                            <p>ultimo accesso 
+                                <span>{{ contacts[chatActive].messages[contacts[chatActive].messages.length - 1].date }}</span> 
+                            </p> 
+                        </div> 
+                    </div> 
+                     
+                    <div class="right-icons"> 
+                        <i class="fas fa-search"></i> 
+                        <i class="fas fa-paperclip"></i> 
+                        <i class="fas fa-ellipsis-v"></i> 
+                    </div> 
+                </div> 
+                <!-- chat messages --> 
+                <div id="chat-page" class="conversation"> 
+                    <div class="chat-message" v-for="(mex, index) in contacts[chatActive].messages"> 
+                        <p :class="mex.status"> {{ mex.text }} 
+                            <span class="message-time">{{ mex.date }}</span> 
+                            <span class="time-messages"> </span> 
+                             
+                            <i id="arrow-menu" class="fas fa-angle-down"> 
+                                <span @click="remove(index)">Cancella</span> 
+                            </i> 
+                        </p> 
+                         
+                    </div>       
+                </div> 
+                <!-- input messages --> 
+                <div class="input-mex"> 
+                    <i class="far fa-smile"></i> 
+                        <input id="input-message" type="text" name="" value="" placeholder="Scrivi un messaggio" v-model="newMex" @keyUp.enter="addNewMex"> 
+                        <i id="invio-mex" @click="addNewMex" class="fas fa-paper-plane"></i> 
+                        <i class="fas fa-microphone"></i> 
+                </div> 
+            </div> 
+            <!-- fine RIGHT side --> 
+        </div> 
+    </div> 
+    <script src="main.js" charset="utf-8"></script> 
+</body> 
 </html>
