@@ -3,13 +3,13 @@ function myFunction() {
     var element = document.body; 
     element.classList.toggle("change-color-mode"); 
 } 
- 
+
 var app = new Vue ({ 
     el: '#root', 
     data: { 
         profile: { 
-            name: 'Paola (tu)', 
-            avatar: 'img/avatar_io.jpg' 
+            name: 'Giuseppe (tu)', 
+            avatar: 'img/avatar_3.jpg'
         }, 
         contacts: [ 
             { 
@@ -57,8 +57,8 @@ var app = new Vue ({
                 ], 
             }, 
             { 
-                name: 'Samuele', 
-                avatar: 'img/avatar_3.jpg', 
+                name: 'Laura', 
+                avatar: 'img/avatar_io.jpg', 
                 visible: true, 
                 messages: [ 
                     { 
@@ -79,7 +79,7 @@ var app = new Vue ({
                 ], 
             }, 
             { 
-                name: 'Luisa', 
+                name: 'Paolo', 
                 avatar: 'img/avatar_4.jpg', 
                 visible: true, 
                 messages: [ 
@@ -95,27 +95,27 @@ var app = new Vue ({
                     } 
                 ], 
             }, 
-             
+
         ], 
         contactsIndex: 0, 
         chatActive: 0, 
         newMex: '', 
         search: '', 
         //time: '', 
-         
+
     }, 
     methods: { 
- 
+
         //per selezionare la chat/contatto 
         selectChat(index) { 
             this.chatActive = index; 
             //console.log(index); 
             //app.autoScroll(); 
         }, 
- 
+
         //creo funzione per aggiungere un messaggio nuovo 
         addNewMex: function() { 
-             
+
             var newMessage = { 
                 date: '10/01/2020 15:30:55', 
                 text: this.newMex, 
@@ -124,9 +124,9 @@ var app = new Vue ({
             this.contacts[this.chatActive].messages.push(newMessage); 
              //azzero l'input 
             this.newMex = ''; 
-             
- 
-             
+
+
+
             //arrow function per creare la risposta messaggio(reply) dopo 1 secondo 
             setTimeout (() => { 
                 let reply = { 
@@ -135,15 +135,15 @@ var app = new Vue ({
                     status: 'receveid' 
                 } 
                 this.contacts[this.chatActive].messages.push(reply); 
- 
+
             }, 1000) 
         }, 
- 
- 
+
+
         //creo funzione per la ricerca degli utenti 
         filteredList() { 
             var userSearch = this.search.toLowerCase();  //variabile che salva i dati input trasformati 
- 
+
             //condizioni if + else per cercare i dati trasformati 
             this.contacts.forEach((user, i) => { 
                 if(user.name.toLowerCase().includes(userSearch)) { 
@@ -153,12 +153,12 @@ var app = new Vue ({
                 } 
             }); 
         }, 
- 
+
         //creo funzione x cancellare messaggio 
         remove(index) { 
             this.contacts[this.chatActive].messages.splice(index, 1); 
         }, 
- 
+
         //messagio automatico con orario corrente 
         getMsg: function(){ 
             this.contatti[this.contactsIndex].chat.push( 
@@ -168,7 +168,7 @@ var app = new Vue ({
                 status: 'sent' 
             }); 
             this.scrollDown(); 
-             
+
         }, 
         //funzione calcola ora 
         currentTime: function(){ 
@@ -185,7 +185,7 @@ var app = new Vue ({
         //     var time = user.messages[user.messages.length - 1].date; 
         //     return moment(time, "LT").format("LT"); 
         // }, 
- 
+
             //scrollare in automatico ultimo messaggio da verificare funzionamento 
         autoScroll() { 
             vue.nextTick (function (){ 
@@ -193,7 +193,7 @@ var app = new Vue ({
                 chatPage.scrollTop = chatPage.scrollHeight; 
             }); 
         }, 
- 
+
         mounted: 
             function() { 
             this.autoScroll(); 
